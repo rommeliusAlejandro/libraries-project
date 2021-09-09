@@ -1,4 +1,5 @@
 <div class="main-menu">
+  <div><h1>{{menuBranding}}</h1></div>
   <div *ngFor="let item of menuItems" class="main-menu-item">
     <button *ngIf="item.query" [routerLink]="[item.path, item.query]" (click)="emitActive(item.label)">{{item.label}}</button>
     <button *ngIf="!item.query" [routerLink]="[item.path]" (click)="emitActive(item.label)">{{item.label}}</button>

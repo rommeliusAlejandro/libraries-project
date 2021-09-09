@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {MenuItem} from "../../api/menu-item";
+import {ConfigService} from "../../config/config.service";
 
 @Component({
   selector: 'lib-main-menu',
@@ -11,10 +12,18 @@ export class MainMenuComponent implements OnInit {
   @Input()
   menuItems: MenuItem[] = [];
 
+  menuBranding!: string;
+
   @Output()
   activeElementEmitter: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(
+    private readonly configService: ConfigService
+  ) {
+
+    this.configService = this.configService;
+
+  }
 
   ngOnInit(): void {
   }
